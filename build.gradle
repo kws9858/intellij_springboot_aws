@@ -1,8 +1,10 @@
-// 책에 비해 Gradle Version이 높아지면서 따로 정리 할 부분이 있음 추후 블로그 포스팅 하기
+// 책에 비해 Gradle Version이 높아지면서
+// buildscript + apply plugin이 plugins + version으로 통합 되었습니다.
 plugins {
     id 'java'
     id 'eclipse'
     id 'org.springframework.boot' version '2.3.12.RELEASE'
+    // io.spring.dependency-management 플러그인은 Spring Boot의 의존성을 관리해 주는 플러그인
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
@@ -10,15 +12,19 @@ group 'com.alphacoder.book'
 version '1.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
-}
-
+// 각종 의존성들을 어떤 원격 저장소에서 받을지를 정합니다.
 dependencies {
-//    compile, runtime, testCompile, testRuntime 은 Gradle 4.10 (2018.8.27) 이래로 deprecate 되었다. 그리고 Gradle 7.0 (2021.4.9) 부터 삭제되었다.
-//필자는 Gradle 7.3.3 을 이용하고 있어서 삭제된 명령을 사용했으므로 오류가 발생했었다.
-//삭제된 네 명령은 각각 implementation, runtimeOnly, testImplementation, testRuntimeOnly 으로 대체되었다.
-//따라서 compile 을 implementation 으로 수정하여 오류를 해결했다.
+    // compile, runtime, testCompile, testRuntime은 gradle 4.10(2018.08.27) 이래로 deprecate되고
+    // gradle 7.0 (2021.4.9) 부터 delete 되었습니다.
+    // 필자는 현재 gradle 7.4 버전을 사용중이기에 delete된 명령어 대신 대체된
+    // implementation, runtimeOnly, testImplementation, testRuntimeOnly로 대체 하여 사용하였습니다.
     implementation('org.springframework.boot:spring-boot-starter-web')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
+repositories {
+    mavenCentral()
+    // 라이브러리 업로드 난이도로 인해 최근 mavenCentral보다 각광받는 저장소입니다.
+    jcenter()
+}
+
+//프로젝트 개발에 필요한 의존성들을 선언하는 곳입니다.
