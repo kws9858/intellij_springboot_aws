@@ -19,6 +19,7 @@ dependencies {
     // 필자는 현재 gradle 7.4 버전을 사용중이기에 delete된 명령어 대신 대체된
     // implementation, runtimeOnly, testImplementation, testRuntimeOnly로 대체 하여 사용하였습니다.
     implementation('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.projectlombok:lombok')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 repositories {
