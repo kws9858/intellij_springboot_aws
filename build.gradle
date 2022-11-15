@@ -19,8 +19,19 @@ dependencies {
     // 필자는 현재 gradle 7.4 버전을 사용중이기에 delete된 명령어 대신 대체된
     // implementation, runtimeOnly, testImplementation, testRuntimeOnly로 대체 하여 사용하였습니다.
     implementation('org.springframework.boot:spring-boot-starter-web')
+
+    // lombok 라이브러리 추가
     implementation('org.projectlombok:lombok')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    // 스프링 부트용 Spring Data Jpa 추상화 라이브러리로 스프링 부트 버전에 맞춰 자동으로 JPA 관련 라이브러리들의 버전을 관리 해줍니다.
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+
+    /*
+        h2 는 인메모리 관계형 데이터 베이스로 별도의 설치가 필요 없이 프로젝트 의존성만으로 관리가 가능합니다.
+        인메모리라는 단어답게 메모리에서 실행되기 때문에 애플리케이션이 재시작할 때마다 초기화 된다는 점을 이용해 테스트시 많이 사용됩니다.
+     */
+    implementation('com.h2database:h2')
 }
 repositories {
     mavenCentral()
