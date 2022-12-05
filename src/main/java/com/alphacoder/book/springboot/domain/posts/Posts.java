@@ -1,5 +1,6 @@
 package com.alphacoder.book.springboot.domain.posts;
 
+import com.alphacoder.book.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +18,7 @@ import javax.persistence.*;
                 기본 값으로 클래스의 카멜케이스 이름을 언더 스코어 네이밍(_)으로 테이블 이름을 매핑합니다.
                 ex) abcDef.java -> abc_def table
  */
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id // 해당 테이블의 PK 필드를 나타냅니다.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
